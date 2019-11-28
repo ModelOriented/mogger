@@ -48,4 +48,4 @@ mogger:
 
 # First version of the interface
 
-![mogger_interface_01.jpg](mogger_interface_01.jpg)
+![mogger_interface_01.png](mogger_interface_01.png)
