@@ -46,5 +46,6 @@ mogger:
 11. interactive interface for filtering experiments based on date, user, metadata, hashes
 
 
+# First version of the interface
 
-
+![mogger_interface_01.jpg](mogger_interface_01.jpg)
