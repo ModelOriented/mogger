@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+.content {
+  display: grid;
+  grid-template-rows: auto;
+  width: 1700px;
+  margin: auto auto;
+  border: solid 3px black;
+}
+
+.header {
+  display: inline-flex;
+  width: auto;
+}
+
+.main {
+  grid-row: 2;
+  display: grid;
+  height: 500px;
+  grid-template-columns: 560px 560px 560px;
+}
+
+.footer {
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: 560px 560px 560px;
+}
+
+.main-column {
+  width:550px;
+  padding:5px;
+}
+
+.footer-column {
+  width:550px;
+  padding:5px;
+  text-align: center;
+}
+
+.title {
+  color: red;
+  margin-left: 20px;
+  margin-top: 16px;
+  font-family: Roboto, sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.header .input-label {
+  margin-left: 10px;
+  margin-top: 20px;
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.footer .input-label {
+  margin-left: 5px;
+  margin-top: 30px;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dropdown {
+  margin:15px;
+  padding:5px;
+}
+
+.container {
+  width: 900px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.input-tags {
+  width: 100%;
+  padding: 15px;
+  display: block;
+  margin: 0 auto;
+}
+
+.label-info {
+  background-color: #5bc0de;
+  padding: 3px;
+}
+
+.bootstrap-tagsinput {
+  margin: 20px;
+  height:30px;
+  width: 250px;
+}

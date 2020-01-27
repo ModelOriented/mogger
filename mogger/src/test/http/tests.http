@@ -1,0 +1,222 @@
+### Test 1 - adding new user
+POST http://localhost:8080/mogger/api/v1/user
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+
+{
+  "userName": "user",
+  "password": "password"
+}
+
+### Adding few more users
+POST http://localhost:8080/mogger/api/v1/user
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+
+{
+  "userName": "user2",
+  "password": "password"
+}
+
+###
+POST http://localhost:8080/mogger/api/v1/user
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+
+{
+  "userName": "user3",
+  "password": "password3"
+}
+
+### Test 2 - adding new dataset | invalid password
+POST http://localhost:8080/mogger/api/v1/dataset
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password_invalid
+
+{
+  "taskName": "classification",
+  "userName": "user",
+  "datasetName": "titanic"
+}
+
+### Test 3 - adding new dataset | valid password
+POST http://localhost:8080/mogger/api/v1/dataset
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password
+
+{
+  "taskName": "classification",
+  "userName": "user",
+  "datasetName": "titanic2"
+}
+
+### Test 4 - adding new model | invalid password
+POST http://localhost:8080/mogger/api/v1/model
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password_invalid
+
+{
+  "datasetId": 1,
+  "userName": "user",
+  "modelName": "model",
+  "hash": "hash",
+  "language": "Python",
+  "target": "survived",
+  "tags": ["abc", "def", "ghi"]
+}
+
+### Test 5 - adding new model | valid password
+POST http://localhost:8080/mogger/api/v1/model
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password
+
+{
+  "datasetId": 1,
+  "userName": "user",
+  "modelName": "model",
+  "hash": "hash",
+  "language": "Python",
+  "target": "survived",
+  "tags": ["abc", "def", "ghi"]
+}
+
+### Test 5.5 - adding new model | valid password & empty tags list
+POST http://localhost:8080/mogger/api/v1/model
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password
+
+{
+  "datasetId": 1,
+  "userName": "user",
+  "modelName": "model",
+  "hash": "hash",
+  "language": "Python",
+  "target": "survived",
+  "tags": null
+}
+
+### Few more models
+POST http://localhost:8080/mogger/api/v1/model
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password
+
+{
+  "datasetId": 1,
+  "userName": "user2",
+  "modelName": "model",
+  "hash": "hash",
+  "language": "R",
+  "target": "not-survived",
+  "tags": null
+}
+
+### Test 6 - adding new audit | invalid password
+POST http://localhost:8080/mogger/api/v1/audit
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: invalid_password
+
+{
+  "datasetId": 1,
+  "modelId": 1,
+  "userName": "user",
+  "measure": "auc",
+  "value": 65.3
+}
+
+### Test 7 - adding new audit | invalid userName
+POST http://localhost:8080/mogger/api/v1/audit
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user2
+password: password
+
+{
+  "datasetId": 1,
+  "modelId": 1,
+  "measure": "auc",
+  "value": 65.3
+}
+
+### Test 8 - adding new audit | everything valid
+POST http://localhost:8080/mogger/api/v1/audit
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password
+
+{
+  "datasetId": 1,
+  "modelId": 1,
+  "measure": "auc",
+  "value": 6111.3
+}
+
+### Test 9 - adding next audit
+POST http://localhost:8080/mogger/api/v1/audit
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+userName: user
+password: password
+
+{
+  "datasetId": 1,
+  "modelId": 1,
+  "measure": "acc",
+  "value": 99.99999
+}
+
+###
+GET http://localhost:8080/mogger/api/v1/audit/1
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET http://localhost:8080/mogger/api/v1/plot/modelAudit
+Content-Type: application/json;charset=UTF8
+Accept: */*
+Cache-Control: no-cache
+
+{
+  "datasetId": 1,
+  "userNames": ["user"],
+  "measure": "auc"
+}
+
+### Test - uniue users by taskName
+GET http://localhost:8080/mogger/api/v1/model/uniqueUsers/classification
+
+### Test - unique measures by taskName
+GET http://localhost:8080/mogger/api/v1/audit/uniqueMeasures/classification
+
+### Test - datasets JSON array (datasetId, datasetName) by taskName
+GET http://localhost:8080/mogger/api/v1/dataset/uniqueDatasets/classification
+
+###

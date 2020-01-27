@@ -1,51 +1,44 @@
-# mogger
+# mogger: Logger for Predictive Models
 
-Logger for predictive models
+The application that allows storing the metadata of models and their audits in the database.
+It also provides a web interface with visualizations of the database contents.
+Storing and acquiring data is made possible through the REST API. 
 
+## Components
 
-## Key features
+- mogger - JAVA REST application (server with database)
+- docker - docker file that allows to run this service on any machine
+- docs - documentation with all the information
+- python_package - Python client package to work with the service
+- r_package - R client package to work with the service
+- scripts - other useful files e.g. script that creates the database
 
-- light and easy to deploy server and client
-- R (optionally python) API for logging predictive models
-- interactive interface for browsing models (with filters based on meta data ans hashes)
+## Run 
 
-## Flow
+Build a docker by typing in a mogger/docker directory:
 
-### Usecase 1: model logging
+```{bash}
+sudo docker build -t mogger .
+```
 
-Pre:
+Run the container with:
 
-1. User creates model M. 
+```{bash}
+sudo docker run mogger
+```
 
-mogger:
+Then by:
 
-2. extracts basic metadata
-3. serialize model to a binary version (optional)
-4. calculates unique hash for the model
+```{bash}
+sudo docker inspect $id
+```
 
-Pre:
+where `$id` is your docker's id, you can check the app ip address.
 
-5. User evaluates model performance on data D.
+Default `$id` is `172.17.0.2`. Docker `$id` is a hash from:
 
-mogger:
+```{bash}
+sudo docker ps
+```
 
-6. extracts basic metadata for the data
-7. serialize data to a binary version (optional)
-8. calculates unique hash for the data
-
-9. stores experiments: variouse performance metrics for model M and data D 
-
-### Usecase 2: exploration of logs
-
-Pre:
-
-10. performance metrics are stored in a folder / light database
-
-mogger:
-
-11. interactive interface for filtering experiments based on date, user, metadata, hashes
-
-
-# First version of the interface
-
-![mogger_interface_01.png](mogger_interface_01.png)
+## Example
