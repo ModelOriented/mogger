@@ -12,6 +12,7 @@ Storing and acquiring data is made possible through the REST API.
 - python_package - Python client package to work with the service
 - r_package - R client package to work with the service
 - scripts - other useful files e.g. script that creates the database
+- examples - Python/R examples
 
 ## Run 
 
