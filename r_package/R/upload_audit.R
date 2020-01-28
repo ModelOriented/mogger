@@ -33,7 +33,7 @@ upload_audit <- function(model_id,
   
   # posting
   r = httr::POST(url=url,
-                 config=add_headers(userName=user_name, password=password),
+                 config=httr::add_headers(userName=user_name, password=password),
                  body=body,
                  encode='json')
   

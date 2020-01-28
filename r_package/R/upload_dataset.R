@@ -2,7 +2,7 @@
 upload_dataset <- function(dataset_name,
                            task,
                            dataset_desc,
-                           dataset_url,
+                           dataset_url=NULL,
                            url=NULL) {
   
   if(file.exists('.mogger.config')) {
@@ -34,7 +34,7 @@ upload_dataset <- function(dataset_name,
   # uploading data
   r = httr::content(httr::POST(
     url=url,
-    config=add_headers("userName"=user_name, "password"=password),
+    config=httr::add_headers("userName"=user_name, "password"=password),
     body=body,
     encode='json'), 
     'text')
